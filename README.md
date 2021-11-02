@@ -1,33 +1,36 @@
----
-layout: page
-title: About
-permalink: /about/
----
+##[点我查看中文说明/Click here for Chinese instructions](https://github.com/bit-ranger/blog/blob/gh-pages/README_zh_CN.md)
 
-## Theme Monos
-> Simple and lightweight theme for Jekyll
+# Blog Address
 
-### Features
-- Responsive.
-- Syntax Highlight
-- Most optimized theme for tech blog.
-- Lightweight with minimum stylesheet.
-- Easy to customize.
-- Offers category menu.
+<https://bit-ranger.github.io/blog/>
 
-### _config.yml
-> Code block will look like this.
-```yml
-highlighter-theme: monokai //you can change your syntax color scheme.
-date_format: "%Y-%M-%D" //and date format.
+
+# Must Modify
+
+## 1.swiftype
+
+This service provides the on-site search function.
+
+Service address: <https://swiftype.com/>.
+
+Documentation: <https://swiftype.com/documentation/site-search/crawler-quick-start/>
+
+After the setup is complete， you need to modify the `swiftype.searchId` in `_config.yml`.
+
+In your swiftype engine, go to `Install Search`, you will find the `swiftype.searchId`.
+
+```html
+<script type="text/javascript">
+...
+...
+  _st('install','swiftype.searchId','2.0.0');
+</script>
 ```
 
-### Screenshots
-#### Page
-![alt text](/public/img/screenshot-1.png)
-#### Articles
-![alt text](/public/img/screenshot-2.png)
-#### Page - Mobile
-![alt text](/public/img/screenshot-m1.png)
-#### Page - Articles
-![alt text](/public/img/screenshot-m2.png)
+## 2.gitalk
+
+This service provides the comment function.
+
+Service address： <https://github.com/gitalk/gitalk>.
+
+After the setup is complete， you need to modify the `comment`  in `_config.yml`.
