@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html>
-
-{% include head.html %}
-
-<body>
-
-{% include header.html %}
-
-<div class="main">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  {% include head.html %}
+  <body>
     <div class="container">
+      {% include header.html %}
+
+      <main>
         {{ content }}
-    </div>
-    <div class="page-scrollTop" data-toggle="tooltip" data-placement="top" title="Top">
-        <a href="javascript:void(0);">
-            <div class="arrow"></div>
-            <div class="stick"></div>
-        </a>
-    </div>
-</div>
+      </main>
 
-{% include footer.html %}
+      {% include footer.html %}
+    </div>
 
-</body>
+    {% if page.math %}
+      {% include mathjax.html %}
+    {% endif %}
+
+    {% if jekyll.environment == 'production' and site.google_analytics %}
+      {% include google-analytics.html %}
+    {% endif %}
+  </body>
 </html>

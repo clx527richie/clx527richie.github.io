@@ -1,16 +1,39 @@
-    <footer  class="footnote footnote-tiffany">
-        <div class="container">
-                <a class="foot-item" href="mailto:{{ site.email }}" target="_blank"><span class="octicon octicon-mail"></span></a>
-                <a class="foot-item" href="https://github.com/{{ site.github.username }}" target="_blank"><span class="octicon octicon-mark-github"></span></a>
-                <a class="foot-item" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}" target="_blank"><span class="octicon octicon-rss"></span></a>
-                <a class="foot-item" href="{{ '/link/' | prepend: site.baseurl | prepend: site.url }}"><span class="octicon octicon-link-external"></span></a>
-                &nbsp;
-                <a href="https://github.com/bit-ranger"><span class="word-keep">&copy; bit-ranger</span></a>
-        </div>
-    </footer>
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{'/static/js/script.js' | prepend:site.baseurl | prepend: site.url  }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    {% for script in page.scripts %}<script type="text/javascript" src="{{'/static/js/' | append:script | prepend:site.baseurl | prepend: site.url  }}"></script>
-    {%endfor%}
+<footer class="footer">
+  <div class="footer-column">
+    <p>
+      <small>
+        &copy;&nbsp;
+        {%- assign date_from = site.posts[-1].date | date_to_xmlschema -%}
+        {%- assign year_from = date_from | date: '%Y' -%}
+        {%- assign date_to   = site.time | date_to_xmlschema -%}
+        {%- assign year_to   = date_to | date: '%Y' -%}
+        {%- unless year_from == nil or year_from == year_to -%}
+          <time datetime="{{ date_from }}">{{ year_from }}</time>-
+        {%- endunless -%}
+        <time datetime="{{ date_to }}">{{ year_to }}</time>
+        {%- if site.author -%}
+          &nbsp;<a href="{{ site.author.url }}" target="_blank">{{ site.author.name }}</a>
+        {%- endif -%}
+        . All right reserved.
+      </small>
+    </p>
+    <p>
+      <small>
+        Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> & <a href="https://github.com/zivhub/monophase" target="_blank">Monophase</a>
+      </small>
+    </p>
+  </div>
+  {% if site.data.social %}
+    <div class="footer-column">
+      <ul class="social-icons">
+        {% for social in site.data.social %}
+          <li class="social-icon-item">
+            <a class="social-icon" href="{{ social.url }}" target="_blank">
+              <i class="{{ social.icon | default: 'fas fa-link' }}" title="{{ social.title }}"></i>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</footer>
